@@ -28,7 +28,8 @@ class ComicController extends Controller
      */
     public function create()
     {
-        //
+        $types = Comic::select('type')->distinct()->get()->all();
+        return view("comics.create", compact('types'));
     }
 
     /**
@@ -39,7 +40,11 @@ class ComicController extends Controller
      */
     public function store(StoreComicRequest $request)
     {
-        //
+        $data = $request->validated();
+        $newComic = new Comic();
+        $newComic->fill($data);
+        $newComic->save();
+        return redirect()->route('comics.show', $newComic->id);
     }
 
     /**
@@ -61,7 +66,7 @@ class ComicController extends Controller
      */
     public function edit(Comic $comic)
     {
-        //
+        return view("comics.edit", compact("comic"));
     }
 
     /**

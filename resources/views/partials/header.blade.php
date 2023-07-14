@@ -13,7 +13,7 @@
 
             <!-- DC Brand Logo -->
             <div class="p-[0.8em]">
-                <a href="#">
+                <a href="{{ route("comics.index") }}">
                     <img src="{{ Vite::asset('resources/img/dc-logo.png') }}" alt="dc-logo" class="max-w-[70%]">
                 </a>
             </div>

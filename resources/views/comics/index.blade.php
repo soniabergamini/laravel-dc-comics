@@ -21,8 +21,8 @@
                     </div>
                 @endforeach
             </section>
-            <div class="w-full text-center">
-                <button class="bg-primaryBlu font-bold text-xs py-2 px-12 my-4 hover:text-black hover:bg-white">LOAD MORE</button>
+            <div class="text-center">
+                <button onclick="window.location=`{{ route('comics.create') }}`" class="bg-primaryBlu font-bold text-xs py-2 px-12 my-4 hover:text-black hover:bg-white cursor-pointer">ADD NEW COMIC</button>
             </div>
 
         </section>
