@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ComicController;
+use App\Models\Comic;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,22 +15,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    // Header Data
-    $navItems = config('store.navItems');
+// Route::get('/', function () {
+//     // Header Data
+//     $navItems = config('store.navItems');
 
-    // Content Data
-    $slides = config('comics');
-    $dcAssets = config('store.dcAssets');
+//     // Content Data
+//     $slides = config('comics');
+//     $dcAssets = config('store.dcAssets');
 
-    // Footer Data
-    $dcItems = config('store.dcItems');
-    $sitesItems = config('store.sitesItems');
-    $socialLinks = config('store.socialLinks');
-    $footerArray = array('dcItems' => $dcItems, 'sitesItems' => $sitesItems, 'socialLinks' => $socialLinks);
+//     // Footer Data
+//     $dcItems = config('store.dcItems');
+//     $sitesItems = config('store.sitesItems');
+//     $socialLinks = config('store.socialLinks');
+//     $footerArray = array('dcItems' => $dcItems, 'sitesItems' => $sitesItems, 'socialLinks' => $socialLinks);
 
-    return view('homepage', compact('navItems', 'footerArray', 'slides', 'dcAssets'));
-})->name('homepage');
+//     return view('homepage', compact('navItems', 'footerArray', 'slides', 'dcAssets'));
+// })->name('homepage');
+
+Route::get('/', [ComicController::class, "index"])->name("home");
+Route::resource("comics", ComicController::class);
 
 Route::get('/comics/{series}', function (string $series) {
     // Header Data

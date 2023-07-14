@@ -10,7 +10,7 @@
                 <div>
                     <h3 class="text-sm font-bold mb-3">DC COMICS</h3>
                     <ul>
-                        @foreach ($navItems as $item)
+                        @foreach ($elements['navItems'] as $item)
                             <li>
                                 <a href="#">{{ $item }}</a>
                             </li>
@@ -31,7 +31,7 @@
                 <div>
                     <h3 class="text-sm font-bold mb-3">DC</h3>
                     <ul>
-                        @foreach ($footerArray['dcItems'] as $item)
+                        @foreach ($elements['footerArray']['dcItems'] as $item)
                             <li>
                                 <a href="#">{{ $item }}</a>
                             </li>
@@ -43,7 +43,7 @@
                 <div>
                     <h3 class="text-sm font-bold mb-3">SITES</h3>
                     <ul>
-                        @foreach ($footerArray['sitesItems'] as $item)
+                        @foreach ($elements['footerArray']['sitesItems'] as $item)
                             <li>
                                 <a href="#">{{ $item }}</a>
                             </li>
@@ -71,7 +71,7 @@
             <div class="flex gap-2.5 items-center">
                 <h3 class="font-bold text-primaryBlu text-xs md:text-base">FOLLOW US</h3>
                 <ul class="flex justify-evenly md:gap-2.5">
-                    @foreach ($footerArray['socialLinks'] as $item)
+                    @foreach ($elements['footerArray']['socialLinks'] as $item)
                         <li>
                             <a href="#">
                                 <img src="{{ Vite::asset("resources/img/".$item['path']) }}" alt="{{$item['alt']}}" class="w-3/4 md:w-full">

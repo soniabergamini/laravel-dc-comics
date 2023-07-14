@@ -21,7 +21,7 @@
             <!-- Nav Menu Links -->
             <div class="h-full">
                 <ul class="flex gap-[1em] text-[0.5rem] md:text-xs h-full items-center">
-                    @foreach ($navItems as $item)
+                    @foreach ($elements['navItems'] as $item)
                         @if ($loop->last)
                             <li>
                                 <a href="#" class="flex gap-2">{{ Str::upper($item) }} <i class="fa-solid fa-caret-down text-primaryBlu"></i></a>
