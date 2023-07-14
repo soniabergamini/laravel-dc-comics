@@ -13,9 +13,9 @@ module.exports = {
             colors: {
                 primaryBlu: '#0182F9',
                 secondaryBlack: '#1C1C1C',
-                tertiaryGrey: '#303030',
+                tertiaryGrey: '#303030'
             }
-        },
+        }
     },
     plugins: [
         plugin(function ({ addComponents }) {
@@ -44,7 +44,7 @@ module.exports = {
                 },
                 '.form-control': {
                     borderColor: '#dc3545',
-                    marginBottom: '1rem',
+                    margin: '.5rem 0 1rem',
                     display: 'block',
                     width: '100%',
                     padding: '0.375rem 0.75rem',

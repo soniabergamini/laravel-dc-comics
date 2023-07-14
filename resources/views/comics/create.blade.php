@@ -89,5 +89,8 @@
 
         </section>
     </div>
+
+    @include('partials.mainbanner')
+
 </main>
 @endsection

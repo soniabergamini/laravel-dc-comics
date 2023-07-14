@@ -13,6 +13,18 @@
             <!-- Cover -->
             <img src="{{ url($comic['thumb']) }}" alt="cover-img" class="object-cover h-[230px] w-[150px] object-top mt-[-250px] border border-white mb-20">
 
+            <!-- Edit/Delete Buttons -->
+            <div class="text-center flex justify-end d-inline items-center">
+                <div class="bg-primaryBlu mt-[-130px] border-primaryBlu border-8">
+                    <button onclick="window.location=`{{ route('comics.edit', $comic) }}`" class="bg-white font-bold text-sm py-2 px-10 hover:animate-bounce cursor-pointer"><i class="fa-solid fa-pen mr-2"></i>EDIT</button>
+                </div>
+                <form action="{{ route('comics.destroy', $comic) }}" method="post" class="d-inline mt-[-130px] border-8 border-primaryBlu bg-primaryBlu text-red-600 relative">
+                    @csrf
+                    @method('DELETE')
+                    <input type="submit" name="delBtn" value="DELETE" class="text-sm font-bold px-8 tracking-wide bg-white text-decoration-underline py-2 cursor-pointer hover:text-white hover:animate-bounce hover:bg-red-600">
+                </form>
+            </div>
+
             <!-- Main Info -->
             <div class="bg-white flex justify-between gap-10">
                 <div class="flex-grow  max-w-[70%]">
