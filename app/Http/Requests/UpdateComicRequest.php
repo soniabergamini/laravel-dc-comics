@@ -33,4 +33,26 @@ class UpdateComicRequest extends FormRequest
             'sale_date' => 'required|date',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'title.required' => 'Comic title is required. Please enter a valid comic title.',
+            'description.required' => 'Comic description is required. Please enter a valid comic description.',
+            'price.required' => 'Comic price is required. Please enter a valid comic price.',
+            'series.required' => 'Comic series is required. Please enter a valid comic series.',
+            'type.required' => 'Comic type is required. Please choose a valid comic type.',
+            'sale_date.required' => 'Comic sale date is required. Please enter a valid comic sale date.',
+
+            'title.min' => 'The comic title must contain at least :min characters.',
+            'description.max' => 'The comic description must not exceed :max characters.',
+            'title.max' => 'The comic title must not exceed :max characters.',
+            'thumb.max' => 'The comic thumb url must not exceed :max characters.',
+            'series.max' => 'The comic series must not exceed :max characters.',
+
+            'thumb.url' => 'Please enter a valid comic thumb url.',
+
+            'sale_date.date' => 'Please enter a valid comic sale date.',
+        ];
+    }
 }
