@@ -70,7 +70,7 @@ module.exports = {
                 },
                 '.form-check-label': {
                     marginBottom: '0',
-                    display: 'inline - block',
+                    display: 'inline-block',
                     cursor: 'pointer'
                 },
                 '.form-field-margin': {
