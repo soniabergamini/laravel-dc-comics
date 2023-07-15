@@ -90,8 +90,8 @@ class ComicController extends Controller
         $data = $request->validated();
         $comic->fill($data);
         $comic->update();
-        $comic->artists()->attach($data['artists']);
-        $comic->writers()->attach($data['writers']);
+        $comic->artists()->sync($data['artists']);
+        $comic->writers()->sync($data['writers']);
         return redirect()->route('comics.show', $comic);
     }
 
