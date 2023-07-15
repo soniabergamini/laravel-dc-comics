@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page-title', $comic->serie)
+@section('page-title', $comic->series)
 @section('content')
 
 <!-- Main Contents -->
@@ -102,7 +102,7 @@
 
 </main>
 <script>
-    var comic = {{ Js::from($comic['serie']) }};
+    var comic = {{ Js::from($comic['series']) }};
     localStorage.setItem('comic_click', comic);
 </script>
 
