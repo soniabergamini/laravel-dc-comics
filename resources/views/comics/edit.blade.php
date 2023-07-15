@@ -80,6 +80,21 @@
                     <div class="invalid-feedback">{{$message}}</div>
                 @endif
 
+                <!-- Comic Artists -->
+                <label class="font-bold">Artists</label>
+                <div class="flex flex-wrap items-center gap-6 p-2 mb-3">
+                    @foreach ($artists as $i => $item)
+                    <div class="form-check w-[30%] border-b border-tertiaryGrey ">
+                        <input type="checkbox" name="artists[]" id="artists{{$i}}" value="{{$item->id}}" class="form-check-input"
+                        @checked(in_array($item->id, old('artists') ?? $comic->artists->pluck('id')->toArray()))>
+                        <label for="artists{{$i}}" class="form-check-label">{{$item->name}}</label>
+                    </div>
+                    @endforeach
+                </div>
+                @error('artists')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+
                 <!-- Submit Button -->
                 <div class="flex justify-center">
                     <input class="bg-primaryBlu font-bold text-sm py-2 px-12 mt-2 mb-4 hover:text-black hover:bg-white cursor-pointer" type="submit" value="SAVE">

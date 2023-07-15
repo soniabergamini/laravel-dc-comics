@@ -36,11 +36,6 @@ class AppServiceProvider extends ServiceProvider
                 'sitesItems' => config('store.sitesItems'),
                 'socialLinks' => config('store.socialLinks')
             ]
-
-            // "dcItems" => config('store.dcItems'),
-            // "sitesItems" => config('store.sitesItems'),
-            // "socialLinks" => config('store.socialLinks'),
-            // "footerArray" = array('dcItems' => $dcItems, 'sitesItems' => $sitesItems, 'socialLinks' => $socialLinks);
         ];
 
         view()->share('elements', $elements);

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreComicRequest;
 use App\Http\Requests\UpdateComicRequest;
+use App\Models\Artist;
 use App\Models\Comic;
 use Illuminate\Auth\Events\Validated;
 
@@ -29,7 +30,8 @@ class ComicController extends Controller
     public function create()
     {
         $types = Comic::select('type')->distinct()->get()->all();
-        return view("comics.create", compact('types'));
+        $artists = Artist::all();
+        return view("comics.create", compact('types', 'artists'));
     }
 
     /**
@@ -44,6 +46,7 @@ class ComicController extends Controller
         $newComic = new Comic();
         $newComic->fill($data);
         $newComic->save();
+        $newComic->artists()->attach($data['artists']);
         return redirect()->route('comics.show', $newComic->id);
     }
 
@@ -67,7 +70,8 @@ class ComicController extends Controller
     public function edit(Comic $comic)
     {
         $types = Comic::select('type')->distinct()->get()->all();
-        return view("comics.edit", compact('comic', 'types'));
+        $artists = Artist::all();
+        return view("comics.edit", compact('comic', 'types', 'artists'));
     }
 
     /**
@@ -82,6 +86,7 @@ class ComicController extends Controller
         $data = $request->validated();
         $comic->fill($data);
         $comic->update();
+        $comic->artists()->attach($data['artists']);
         return redirect()->route('comics.show', $comic);
     }
 

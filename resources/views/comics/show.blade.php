@@ -69,7 +69,7 @@
                 <h3 class="text-2xl font-medium mb-6">Talent</h3>
                 <div class="border-y items-center flex justify-between py-2">
                     <h4 class="font-medium">Art by:</h4>
-                    <p class="w-[75%] text-sm text-primaryBlu">{{ collect($comic['artists'])->implode(', ') }}</p>
+                    <p class="w-[75%] text-sm text-primaryBlu">{{ $comic->artists->pluck('name')->implode(', ') }}</p>
                 </div>
                 <div class="border-b items-center flex justify-between py-2">
                     <h4 class="font-medium">Written by:</h4>

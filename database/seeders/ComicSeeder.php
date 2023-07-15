@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Artist;
 use App\Models\Comic;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Schema;
 
 class ComicSeeder extends Seeder
 {
@@ -15,6 +17,10 @@ class ComicSeeder extends Seeder
      */
     public function run()
     {
+        Schema::disableForeignKeyConstraints();
+        Comic::truncate();
+        Schema::enableForeignKeyConstraints();
+
         $comics = config('comics');
 
         foreach ($comics as $item) {
@@ -26,7 +32,15 @@ class ComicSeeder extends Seeder
             $newComic->series = $item["series"];
             $newComic->sale_date = $item["sale_date"];
             $newComic->type = $item["type"];
+
+            $comicArtistId = [];
+            foreach ($item['artists'] as $icon) {
+                $artistFilter = Artist::where('name', $icon)->get();
+                $comicArtistId[] = $artistFilter[0]['id'];
+            }
             $newComic->save();
+            @dump(array_unique($comicArtistId));
+            $newComic->artists()->sync(array_unique($comicArtistId));
         }
     }
 }

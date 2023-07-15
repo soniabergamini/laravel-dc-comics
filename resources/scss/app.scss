@@ -103,4 +103,23 @@ header li {
     border-radius: 0.25rem;
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
+
+.form-check {
+    position: relative;
+    display: block;
+    padding-left: 1.25rem;
+}
+
+.form-check-input {
+    position: absolute;
+    margin-top: 0.3rem;
+    margin-left: -1.25rem;
+    cursor: pointer;
+}
+
+.form-check-label {
+    margin-bottom: 0;
+    display: inline-block;
+    cursor: default;
+}
 */

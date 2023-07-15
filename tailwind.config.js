@@ -57,6 +57,22 @@ module.exports = {
                     borderRadius: '0.25rem',
                     transition: 'border-color .15s ease-in-out, box-shadow .15s ease-in-out'
                 },
+                '.form-check': {
+                    position: 'relative',
+                    display: 'block',
+                    paddingLeft: '1.25rem'
+                },
+                '.form-check-input': {
+                    position: 'absolute',
+                    marginTop: '0.3rem',
+                    marginLeft: '-1.25rem',
+                    cursor: 'pointer'
+                },
+                '.form-check-label': {
+                    marginBottom: '0',
+                    display: 'inline - block',
+                    cursor: 'pointer'
+                }
             })
         })
     ]

@@ -13,16 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('comics', function (Blueprint $table) {
+        Schema::create('artist_comic', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('comic_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('artist_id')->nullable()->constrained()->onDelete('cascade');
             $table->timestamps();
-            $table->string('title', 100);
-            $table->text('description', 1000);
-            $table->text('thumb', 1000)->nullable();
-            $table->float('price', 8, 2);
-            $table->string('series', 50);
-            $table->date('sale_date');
-            $table->string('type', 50);
         });
     }
 
@@ -33,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comics');
+        Schema::dropIfExists('artist_comic');
     }
 };

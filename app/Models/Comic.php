@@ -18,4 +18,9 @@ class Comic extends Model
         "type",
         "sale_date"
     ];
+
+    public function artists()
+    {
+        return $this->belongsToMany(Artist::class);
+    }
 }
