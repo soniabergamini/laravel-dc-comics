@@ -7,6 +7,7 @@ use App\Http\Requests\StoreComicRequest;
 use App\Http\Requests\UpdateComicRequest;
 use App\Models\Artist;
 use App\Models\Comic;
+use App\Models\Writer;
 use Illuminate\Auth\Events\Validated;
 
 class ComicController extends Controller
@@ -31,7 +32,8 @@ class ComicController extends Controller
     {
         $types = Comic::select('type')->distinct()->get()->all();
         $artists = Artist::all();
-        return view("comics.create", compact('types', 'artists'));
+        $writers = Writer::all();
+        return view("comics.create", compact('types', 'artists', 'writers'));
     }
 
     /**
@@ -47,6 +49,7 @@ class ComicController extends Controller
         $newComic->fill($data);
         $newComic->save();
         $newComic->artists()->attach($data['artists']);
+        $newComic->writers()->attach($data['writers']);
         return redirect()->route('comics.show', $newComic->id);
     }
 
@@ -71,7 +74,8 @@ class ComicController extends Controller
     {
         $types = Comic::select('type')->distinct()->get()->all();
         $artists = Artist::all();
-        return view("comics.edit", compact('comic', 'types', 'artists'));
+        $writers = Writer::all();
+        return view("comics.edit", compact('comic', 'types', 'artists', 'writers'));
     }
 
     /**
@@ -87,6 +91,7 @@ class ComicController extends Controller
         $comic->fill($data);
         $comic->update();
         $comic->artists()->attach($data['artists']);
+        $comic->writers()->attach($data['writers']);
         return redirect()->route('comics.show', $comic);
     }
 

@@ -72,6 +72,9 @@ module.exports = {
                     marginBottom: '0',
                     display: 'inline - block',
                     cursor: 'pointer'
+                },
+                '.form-field-margin': {
+                    margin: '.5rem 0 1rem'
                 }
             })
         })

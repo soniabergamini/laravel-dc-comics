@@ -31,7 +31,8 @@ class StoreComicRequest extends FormRequest
             'series' => 'required|max:50',
             'type' => 'required',
             'sale_date' => 'required|date',
-            'artists' => 'required|exists:artists,id'
+            'artists' => 'required|exists:artists,id',
+            'writers' => 'required|exists:writers,id'
         ];
     }
 
@@ -45,6 +46,7 @@ class StoreComicRequest extends FormRequest
             'type.required' => 'Comic type is required. Please choose a valid comic type.',
             'sale_date.required' => 'Comic sale date is required. Please enter a valid comic sale date.',
             'artists.required' => 'Comic artists are required. Please select one or more artists for this comic.',
+            'writers.required' => 'Comic writers are required. Please select one or more writers for this comic.',
 
             'title.min' => 'The comic title must contain at least :min characters.',
             'description.max' => 'The comic description must not exceed :max characters.',

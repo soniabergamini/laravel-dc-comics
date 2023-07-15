@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Artist;
 use App\Models\Comic;
+use App\Models\Writer;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
@@ -33,14 +34,24 @@ class ComicSeeder extends Seeder
             $newComic->sale_date = $item["sale_date"];
             $newComic->type = $item["type"];
 
-            $comicArtistId = [];
+            // Artists
+            $comicArtistsId = [];
             foreach ($item['artists'] as $icon) {
                 $artistFilter = Artist::where('name', $icon)->get();
-                $comicArtistId[] = $artistFilter[0]['id'];
+                $comicArtistsId[] = $artistFilter[0]['id'];
             }
+
+            // Writers
+            $comicWritersId = [];
+            foreach ($item['writers'] as $icon) {
+                $writerFilter = Writer::where('name', $icon)->get();
+                $comicWritersId[] = $writerFilter[0]['id'];
+            }
+
             $newComic->save();
-            @dump(array_unique($comicArtistId));
-            $newComic->artists()->sync(array_unique($comicArtistId));
+            @dump(array_unique($comicWritersId));
+            $newComic->artists()->sync(array_unique($comicArtistsId));
+            $newComic->writers()->sync(array_unique($comicWritersId));
         }
     }
 }

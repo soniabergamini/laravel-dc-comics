@@ -82,9 +82,9 @@
 
                 <!-- Comic Artists -->
                 <label class="font-bold">Artists</label>
-                <div class="flex flex-wrap items-center gap-6 p-2 mb-3">
+                <div class="flex flex-wrap justify-between items-center gap-6 py-2 pl-4 bg-tertiaryGrey rounded form-field-margin">
                     @foreach ($artists as $i => $item)
-                    <div class="form-check w-[30%] border-b border-tertiaryGrey ">
+                    <div class="form-check w-[20%]">
                         <input type="checkbox" name="artists[]" id="artists{{$i}}" value="{{$item->id}}" class="form-check-input"
                         @checked(in_array($item->id, old('artists') ?? $comic->artists->pluck('id')->toArray()))>
                         <label for="artists{{$i}}" class="form-check-label">{{$item->name}}</label>
@@ -92,6 +92,21 @@
                     @endforeach
                 </div>
                 @error('artists')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+
+                <!-- Comic Writers -->
+                <label class="font-bold">Writers</label>
+                <div class="flex flex-wrap justify-between items-center gap-6 py-2 pl-4 bg-tertiaryGrey rounded form-field-margin">
+                    @foreach ($writers as $i => $item)
+                    <div class="form-check w-[20%]">
+                        <input type="checkbox" name="writers[]" id="writers{{$i}}" value="{{$item->id}}" class="form-check-input"
+                        @checked(in_array($item->id, old('writers') ?? $comic->writers->pluck('id')->toArray()))>
+                        <label for="writers{{$i}}" class="form-check-label">{{$item->name}}</label>
+                    </div>
+                    @endforeach
+                </div>
+                @error('writers')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
 
