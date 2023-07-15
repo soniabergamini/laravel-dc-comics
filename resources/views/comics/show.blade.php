@@ -35,7 +35,7 @@
                     <!-- Price -->
                     <div class="bg-[#55BA58] h-9 border-b-2 border-gray-500 mb-4 flex text-sm font-medium text-[#B3F586]">
                         <div class="w-[70%] flex justify-between px-5 py-1.5 border-r border-gray-500">
-                            <p>U.S. PRICE: <span class="text-white">{{$comic['price']}}</span> </p>
+                            <p>U.S. PRICE: <span class="text-white">${{$comic['price']}}</span> </p>
                             <p>AVAILABLE</p>
                         </div>
                         <div class="w-[30%] text-white text-center py-1.5 border-l border-gray-500">
@@ -87,7 +87,7 @@
                 </div>
                 <div class="border-b items-center flex justify-between py-2">
                     <h4 class="font-medium">U.S. Price:</h4>
-                    <p class="w-[75%] text-sm text-black">{{ $comic['price'] }}</p>
+                    <p class="w-[75%] text-sm text-black">${{ $comic['price'] }}</p>
                 </div>
                 <div class="border-b items-center flex justify-between py-2">
                     <h4 class="font-medium">On Sale Date:</h4>

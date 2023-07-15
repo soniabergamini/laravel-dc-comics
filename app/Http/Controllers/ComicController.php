@@ -66,7 +66,8 @@ class ComicController extends Controller
      */
     public function edit(Comic $comic)
     {
-        return view("comics.edit", compact("comic"));
+        $types = Comic::select('type')->distinct()->get()->all();
+        return view("comics.edit", compact('comic', 'types'));
     }
 
     /**
@@ -78,7 +79,10 @@ class ComicController extends Controller
      */
     public function update(UpdateComicRequest $request, Comic $comic)
     {
-        //
+        $data = $request->validated();
+        $comic->fill($data);
+        $comic->update();
+        return redirect()->route('comics.show', $comic);
     }
 
     /**
